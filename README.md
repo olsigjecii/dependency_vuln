@@ -1,4 +1,4 @@
-# Known Vulnerabilities in Dependencies (Rust Edition)
+# Known Vulnerabilities in Dependencies in Rust 🦀
 
 This project demonstrates how using an outdated or vulnerable crate (dependency) can expose a Rust application to Remote Code Execution (RCE), and how updating to a secure version mitigates this risk.
 
