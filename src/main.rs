@@ -6,7 +6,7 @@ use std::process::Command;
 // SIMULATED VULNERABLE DEPENDENCY (vulnerable-input-lib v1.0.0)
 // -------------------------------------------------------------------------
 // This module simulates an external crate that contains a vulnerability.
-// The root cause is inadequate sanitization of inputs[cite: 45].
+// The root cause is inadequate sanitization of inputs.
 mod vulnerable_input_lib {
     use super::*;
 
@@ -49,7 +49,7 @@ struct InputRequest {
 // Vulnerable Endpoint
 #[post("/vulnerable/process")]
 async fn vulnerable_handler(req: web::Json<InputRequest>) -> impl Responder {
-    // Calling the vulnerable library function [cite: 52]
+    // Calling the vulnerable library function
     let result = vulnerable_input_lib::process(&req.input);
     HttpResponse::Ok().json(serde_json::json!({ "result": result }))
 }
@@ -57,7 +57,7 @@ async fn vulnerable_handler(req: web::Json<InputRequest>) -> impl Responder {
 // Secure Endpoint
 #[post("/secure/process")]
 async fn secure_handler(req: web::Json<InputRequest>) -> impl Responder {
-    // Calling the secure library function [cite: 76]
+    // Calling the secure library function
     let result = secure_input_lib::process(&req.input);
     HttpResponse::Ok().json(serde_json::json!({ "result": result }))
 }
